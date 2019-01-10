@@ -45,14 +45,14 @@ There is a [Postman](https://www.getpostman.com/) export file with all the possi
 
 ## Static code analysis
 
-This sample also contains [SonarQube](https://www.sonarqube.org/) instance running as a Docker container.
+This sample also contains a [SonarQube](https://www.sonarqube.org/) instance running as a Docker container.
 
 ### Preparing SonarQube
 
-1. Access SonarQube instance at http://localhost:9000/;
+1. Access the SonarQube instance at http://localhost:9000/;
 2. Login with the credentials *admin*/*admin*;
 3. Copy the generated token;
-4. Replace the value of the property `sonar.login` at `build.gradle`;
+4. Replace the value of the property `sonar.login` at `build.gradle` with the copied token;
 5. Go to the Marketplace pane at http://localhost:9000/admin/marketplace;
 6. Search for the *Java* plugin and install it.
 
