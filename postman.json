@@ -1,405 +1,565 @@
 {
-	"variables": [],
-	"info": {
-		"name": "Spring GraphQL/REST Sample API",
-		"_postman_id": "985f648a-7a05-0736-1d45-8fa93a513eb4",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "GraphQL - Orders",
-			"description": "",
-			"item": [
-				{
-					"name": "Order - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ allOrders { id, user { username }, products { productSku } } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Order - Find by ID",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ findOrder(id: 1) { id, user { username }, products { productSku } } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "GraphQL - Products",
-			"description": "",
-			"item": [
-				{
-					"name": "Products - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ allProducts { id, productSku } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products - Find by sku",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ findProduct(sku: \\\"ifp001\\\") { id, productName } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "GraphQL - Users",
-			"description": "",
-			"item": [
-				{
-					"name": "Users - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ allUsers { id, fullname } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Users - Find by username",
-					"request": {
-						"url": "http://localhost:8080/api/query",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"query\": \"{ findUser(username: \\\"johndoe\\\") { id, fullname } }\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "REST - Orders",
-			"description": "",
-			"item": [
-				{
-					"name": "Orders - Create",
-					"request": {
-						"url": "http://localhost:8080/api/orders",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"username\": \"johndoe\",\n\t\"products_sku\": [ \"ifp001\" ]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Orders - Find by ID",
-					"request": {
-						"url": "http://localhost:8080/api/orders/1",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Orders - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/orders",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "REST - Products",
-			"description": "",
-			"item": [
-				{
-					"name": "Products - Create",
-					"request": {
-						"url": "http://localhost:8080/api/products",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"product_name\": \"ACME Product\",\n\t\"product_sku\": \"ifp001\",\n\t\"product_price\": 24.11,\n\t\"active\" : true\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products  - Find by ID",
-					"request": {
-						"url": "http://localhost:8080/api/products/ifp001",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products  - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/products",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products  - Update",
-					"request": {
-						"url": "http://localhost:8080/api/products/ifp001",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"product_price\": 69.24\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products  - Activate",
-					"request": {
-						"url": "http://localhost:8080/api/products/ifp001/activate",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Products  - Deactivate",
-					"request": {
-						"url": "http://localhost:8080/api/products/ifp001/deactivate",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "REST - Users",
-			"description": "",
-			"item": [
-				{
-					"name": "Users - Create",
-					"request": {
-						"url": "http://localhost:8080/api/users",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"username\": \"johndoe\",\n\t\"fullname\": \"John Doe\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Users - Find by username",
-					"request": {
-						"url": "http://localhost:8080/api/users/johndoe",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Users - Find all",
-					"request": {
-						"url": "http://localhost:8080/api/users",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Users - Update",
-					"request": {
-						"url": "http://localhost:8080/api/users/johndoe",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"fullname\": \"John No Doe\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Users - Delete",
-					"request": {
-						"url": "http://localhost:8080/api/users/johndoe",
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "variables": [],
+  "info": {
+    "name": "Spring GraphQL/REST Sample API",
+    "_postman_id": "985f648a-7a05-0736-1d45-8fa93a513eb4",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GraphQL - Orders",
+      "description": "",
+      "item": [
+        {
+          "name": "Order - Find all",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ allOrders { id, user { username }, products { productSku } } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Order - Find by ID",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ findOrder(id: 1) { id, user { username }, products { productSku } } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Orders - Create",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { createOrder(username: \\\"janedoe\\\", skus: [ { sku: \\\"ifp002\\\" } ]) { id } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GraphQL - Products",
+      "description": "",
+      "item": [
+        {
+          "name": "Products - Find all",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ allProducts { id, productSku } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Find by sku",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ findProduct(sku: \\\"ifp002\\\") { id, productName, active } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Create",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { createProduct(sku: \\\"ifp002\\\", name: \\\"ACME Turbo\\\", price: 1.99) { productSku, productPrice } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Update",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { updateProduct(sku: \\\"ifp002\\\", name: \\\"ACME Turbo\\\", price: 2.99) { productSku, productPrice } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Activate",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { activateProduct(sku: \\\"ifp002\\\") }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Dectivate",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { deactivateProduct(sku: \\\"ifp002\\\") }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GraphQL - Users",
+      "description": "",
+      "item": [
+        {
+          "name": "Users - Find all",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ allUsers { id, fullname } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Find by username",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"{ findUser(username: \\\"janedoe\\\") { id, fullname } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Create",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { createUser(username: \\\"janedoe\\\", fullname: \\\"Jane Doe\\\") { username } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Update",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { updateUser(username: \\\"janedoe\\\", fullname: \\\"Jane No Doe\\\") { fullname } }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Delete",
+          "request": {
+            "url": "http://localhost:8080/graphql",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"query\": \"mutation { deleteUser(username: \\\"janedoe\\\") }\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "REST - Orders",
+      "description": "",
+      "item": [
+        {
+          "name": "Orders - Create",
+          "request": {
+            "url": "http://localhost:8080/api/orders",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\": \"johndoe\",\n\t\"products_sku\": [ \"ifp001\" ]\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Orders - Find by ID",
+          "request": {
+            "url": "http://localhost:8080/api/orders/1",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Orders - Find all",
+          "request": {
+            "url": "http://localhost:8080/api/orders",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "REST - Products",
+      "description": "",
+      "item": [
+        {
+          "name": "Products - Create",
+          "request": {
+            "url": "http://localhost:8080/api/products",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"product_name\": \"ACME Product\",\n\t\"product_sku\": \"ifp001\",\n\t\"product_price\": 24.11,\n\t\"active\" : true\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products  - Find by ID",
+          "request": {
+            "url": "http://localhost:8080/api/products/ifp001",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products  - Find all",
+          "request": {
+            "url": "http://localhost:8080/api/products",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products  - Update",
+          "request": {
+            "url": "http://localhost:8080/api/products/ifp001",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"product_price\": 69.24\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products  - Activate",
+          "request": {
+            "url": "http://localhost:8080/api/products/ifp001/activate",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Products  - Deactivate",
+          "request": {
+            "url": "http://localhost:8080/api/products/ifp001/deactivate",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "REST - Users",
+      "description": "",
+      "item": [
+        {
+          "name": "Users - Create",
+          "request": {
+            "url": "http://localhost:8080/api/users",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\": \"johndoe\",\n\t\"fullname\": \"John Doe\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Find by username",
+          "request": {
+            "url": "http://localhost:8080/api/users/johndoe",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Find all",
+          "request": {
+            "url": "http://localhost:8080/api/users",
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Update",
+          "request": {
+            "url": "http://localhost:8080/api/users/johndoe",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"fullname\": \"John No Doe\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Users - Delete",
+          "request": {
+            "url": "http://localhost:8080/api/users/johndoe",
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }

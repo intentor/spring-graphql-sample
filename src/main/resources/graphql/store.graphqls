@@ -18,6 +18,10 @@ type Order {
     products: [Product]!
 }
 
+input ProductSkuInput {
+    sku: String!
+}
+
 type Query {
    allUsers: [User]
    findUser(username: String!): User
@@ -27,6 +31,19 @@ type Query {
 
    allOrders: [Order]
    findOrder(id: Int!): Order
+}
+
+type Mutation {
+    createUser(username: String!, fullname: String!) : User
+    updateUser(username: String!, fullname: String!) : User
+    deleteUser(username: String!) : Boolean
+
+    createProduct(sku: String!, name: String!, price: Float!) : Product
+    updateProduct(sku: String!, name: String!, price: Float!) : Product
+    activateProduct(sku: String!) : Boolean
+    deactivateProduct(sku: String!) : Boolean
+
+    createOrder(username: String!, skus: [ ProductSkuInput ]) : Order
 }
 
 schema {

@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.Optional;
 
 /**
- * Repository for accessing {@link User} data.
+ * Repository for processing {@link User} data.
  */
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     /**

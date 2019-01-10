@@ -1,9 +1,8 @@
-package org.intentor.samples.store.queries;
+package org.intentor.samples.store.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.intentor.samples.store.domain.User;
 import org.intentor.samples.store.exceptions.DataNotFoundException;
-import org.intentor.samples.store.repositories.UserRepository;
 import org.intentor.samples.store.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

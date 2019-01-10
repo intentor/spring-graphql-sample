@@ -1,4 +1,4 @@
-package org.intentor.samples.store.queries;
+package org.intentor.samples.store.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.intentor.samples.store.domain.Order;

@@ -2,7 +2,6 @@ package org.intentor.samples.store.services;
 
 import org.intentor.samples.store.domain.Order;
 import org.intentor.samples.store.domain.Product;
-import org.intentor.samples.store.domain.User;
 import org.intentor.samples.store.domain.valueobjects.OrderCreationVo;
 import org.intentor.samples.store.exceptions.DataNotFoundException;
 import org.intentor.samples.store.repositories.OrderRepository;
@@ -13,7 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Service to manage order data.
@@ -49,24 +50,25 @@ public class OrderService {
      * @param order Order to be created.
      * @return Created order, with ID populated.
      */
+    @Transactional
     public Order create(OrderCreationVo order) {
         var user = userRepository.findByUsername(order.getUsername())
                 .orElseThrow(() -> new DataNotFoundException("user", order.getUsername()));
-        var products = new ArrayList<Product>();
-        var orderTotal = 0.0;
+        var orderTotal = new Object() { Double total = 0.0; };
 
-        for (var sku : order.getProductsSku()) {
-            var product = productRepository.findByProductSku(sku)
-                    .orElseThrow(() -> new DataNotFoundException("product", sku));
-
-            orderTotal += product.getProductPrice();
-            products.add(product);
-        }
+        var products = order.getProductsSku().stream()
+                .map(sku -> {
+                    var product = productRepository.findByProductSku(sku)
+                            .orElseThrow(() -> new DataNotFoundException("product", sku));
+                    orderTotal.total += product.getProductPrice();
+                    return product;
+                })
+                .collect(Collectors.toList());
 
         var entity = new Order();
         entity.setUser(user);
         entity.setProducts(products);
-        entity.setOrderTotal(orderTotal);
+        entity.setOrderTotal(orderTotal.total);
 
         return orderRepository.save(entity);
     }

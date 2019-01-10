@@ -1,16 +1,12 @@
 package org.intentor.samples.store.controllers;
 
 import org.intentor.samples.store.domain.Product;
-import org.intentor.samples.store.exceptions.DataNotFoundException;
-import org.intentor.samples.store.repositories.ProductRepository;
 import org.intentor.samples.store.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static org.intentor.samples.store.helpers.StringHelper.notEmpty;
 
 import javax.validation.Valid;
 import java.net.URI;

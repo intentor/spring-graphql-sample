@@ -1,20 +1,20 @@
 buildscript {
-	ext {
-		springBootVersion = '2.1.1.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 plugins {
-	id 'org.sonarqube' version '2.7'
-	id 'java'
-	id 'org.springframework.boot' version '2.1.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.sonarqube' version '2.7'
+    id 'java'
+    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 }
 
 group = 'org.intentor.samples'
@@ -24,55 +24,55 @@ sourceCompatibility = '1.10'
 targetCompatibility = '1.10'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-	implementation('org.springframework.boot:spring-boot-starter-hateoas')
-	implementation('com.graphql-java:graphql-spring-boot-starter:5.0.2')
-	implementation('com.graphql-java:graphql-java-tools:5.2.4')
-	implementation('com.graphql-java:graphiql-spring-boot-starter:5.0.2')
-	implementation('io.springfox:springfox-swagger-ui:2.9.2')
-	implementation('io.springfox:springfox-swagger2:2.9.2')
-	runtimeOnly('mysql:mysql-connector-java')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-hateoas')
+    implementation('com.graphql-java:graphql-spring-boot-starter:5.0.2')
+    implementation('com.graphql-java:graphql-java-tools:5.2.4')
+    implementation('com.graphql-java:graphiql-spring-boot-starter:5.0.2')
+    implementation('io.springfox:springfox-swagger-ui:2.9.2')
+    implementation('io.springfox:springfox-swagger2:2.9.2')
+    runtimeOnly('mysql:mysql-connector-java')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
 sonarqube {
-	properties {
-		property 'sonar.host.url', 'http://localhost:9000'
-		property 'sonar.sourceEncoding', 'UTF-8'
-		property 'sonar.scm.disabled', 'true'
-		property 'sonar.login', '2763b1f853fd5ae5d52b4c136c143dbcc52a7ba3'
-	}
+    properties {
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.sourceEncoding', 'UTF-8'
+        property 'sonar.scm.disabled', 'true'
+        property 'sonar.login', '2763b1f853fd5ae5d52b4c136c143dbcc52a7ba3'
+    }
 }
 
 task dockerRun() {
-	group = 'docker'
-	description = 'Runs Docker containers necessary to execute the project.'
+    group = 'docker'
+    description = 'Runs Docker containers necessary to execute the project.'
 
-	doLast {
-		exec {
-			executable "sh"
-			args "-c", "docker-compose -f docker/docker-compose.yml up -d"
-		}
+    doLast {
+        exec {
+            executable "sh"
+            args "-c", "docker-compose -f docker/docker-compose.yml up -d"
+        }
 
-		println 'Waiting containers to initialize...'
-		sleep 5 * 1000
-		println 'Containers initialized.'
-	}
+        println 'Waiting containers to initialize...'
+        sleep 5 * 1000
+        println 'Containers initialized.'
+    }
 }
 
 task dockerStop() {
-	group = 'docker'
-	description = 'Stops Docker containers necessary to execute the project.'
+    group = 'docker'
+    description = 'Stops Docker containers necessary to execute the project.'
 
-	doLast {
-		exec {
-			executable "sh"
-			args "-c", "docker-compose -f docker/docker-compose.yml stop"
-		}
-	}
+    doLast {
+        exec {
+            executable "sh"
+            args "-c", "docker-compose -f docker/docker-compose.yml stop"
+        }
+    }
 }

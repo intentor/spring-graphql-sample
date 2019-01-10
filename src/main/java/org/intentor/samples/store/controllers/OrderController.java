@@ -1,14 +1,7 @@
 package org.intentor.samples.store.controllers;
 
-import org.intentor.samples.store.domain.Order;
-import org.intentor.samples.store.domain.Product;
 import org.intentor.samples.store.domain.valueobjects.OrderCreationVo;
-import org.intentor.samples.store.exceptions.DataNotFoundException;
-import org.intentor.samples.store.repositories.OrderRepository;
-import org.intentor.samples.store.repositories.ProductRepository;
-import org.intentor.samples.store.repositories.UserRepository;
 import org.intentor.samples.store.services.OrderService;
-import org.intentor.samples.store.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -17,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.ArrayList;
 
 import static org.intentor.samples.store.Constants.MAX_PAGE_SIZE;
 import static org.intentor.samples.store.controllers.helpers.PaginationHelper.paginate;
-import static org.springframework.http.ResponseEntity.*;
+import static org.springframework.http.ResponseEntity.created;
+import static org.springframework.http.ResponseEntity.ok;
 
 /**
  * API for orders related operations.

@@ -1,8 +1,6 @@
 package org.intentor.samples.store.services;
 
 import org.intentor.samples.store.domain.Product;
-import org.intentor.samples.store.domain.User;
-import org.intentor.samples.store.domain.valueobjects.OrderCreationVo;
 import org.intentor.samples.store.exceptions.DataNotFoundException;
 import org.intentor.samples.store.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import static org.intentor.samples.store.helpers.StringHelper.notEmpty;
-import static org.springframework.http.ResponseEntity.ok;
 
 /**
  * Service to manage product data.
@@ -95,7 +92,7 @@ public class ProductService {
     /**
      * Activates/deactivates a product.
      *
-     * @param sku SKU code of the product to activate.
+     * @param sku      SKU code of the product to activate.
      * @param activate True if the product should be activated, otherwise false.
      * @throws DataNotFoundException in case no product is found.
      */

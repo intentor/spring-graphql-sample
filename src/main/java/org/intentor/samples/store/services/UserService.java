@@ -1,6 +1,5 @@
 package org.intentor.samples.store.services;
 
-import org.intentor.samples.store.domain.Product;
 import org.intentor.samples.store.domain.User;
 import org.intentor.samples.store.exceptions.DataNotFoundException;
 import org.intentor.samples.store.repositories.UserRepository;

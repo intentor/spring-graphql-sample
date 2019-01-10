@@ -35,6 +35,7 @@ On the main project folder, execute:
 ## URLs
 
 - Main app: http://localhost:8080/api/
+- GraphiQL: http://localhost:8080/graphiql/
 - Swagger Docs: http://localhost:8080/v2/api-docs
 - Swagger UI: http://localhost:8080/swagger-ui.html
 - SonarQube: http://localhost:9000/

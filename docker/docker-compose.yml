@@ -37,7 +37,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-        - ./volumes/sonarqube/postgres:/var/lib/postgresql/data
+      - ./volumes/sonarqube/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=sonarqube
       - POSTGRES_PASSWORD=s0N@r851
