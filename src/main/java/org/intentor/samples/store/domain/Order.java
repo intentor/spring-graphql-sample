@@ -24,11 +24,11 @@ public class Order {
     private Long id;
 
     @NotNull
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
     @NotEmpty
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "orders_products",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")

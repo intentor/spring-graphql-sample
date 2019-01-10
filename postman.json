@@ -8,6 +8,52 @@
 	},
 	"item": [
 		{
+			"name": "GraphQL - Orders",
+			"description": "",
+			"item": [
+				{
+					"name": "Order - Find all",
+					"request": {
+						"url": "http://localhost:8080/api/query",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"{ allOrders { id, user { username }, products { productSku } } }\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Find by ID",
+					"request": {
+						"url": "http://localhost:8080/api/query",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"{ findOrder(id: 1) { id, user { username }, products { productSku } } }\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "GraphQL - Products",
 			"description": "",
 			"item": [

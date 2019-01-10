@@ -12,11 +12,21 @@ type Product {
     active: Boolean!
 }
 
+type Order {
+    id: ID!
+    user: User!
+    products: [Product]!
+}
+
 type Query {
    allUsers: [User]
    findUser(username: String!): User
+
    allProducts: [Product]
    findProduct(sku: String!): Product
+
+   allOrders: [Order]
+   findOrder(id: Int!): Order
 }
 
 schema {

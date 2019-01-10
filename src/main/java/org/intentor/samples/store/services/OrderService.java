@@ -95,18 +95,10 @@ public class OrderService {
      *
      * @param id Order ID.
      * @return Order found.
+     * @throws DataNotFoundException in case no order is found.
      */
     public Order findById(Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException(ENTITY_NAME, id.toString()));
-    }
-
-    /**
-     * Deletes an order.
-     *
-     * @param id Order ID.
-     */
-    public void delete(Long id) {
-
     }
 }
