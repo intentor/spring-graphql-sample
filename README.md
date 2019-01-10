@@ -51,8 +51,10 @@ This sample also contains [SonarQube](https://www.sonarqube.org/) instance runni
 
 1. Access SonarQube instance at http://localhost:9000/;
 2. Login with the credentials *admin*/*admin*;
-3. Go to the Marketplace pane at http://localhost:9000/admin/marketplace;
-4. Search for the *Java* plugin and install it.
+3. Copy the generated token;
+4. Replace the value of the property `sonar.login` at `build.gradle`;
+5. Go to the Marketplace pane at http://localhost:9000/admin/marketplace;
+6. Search for the *Java* plugin and install it.
 
 ### Performing a scan
 
