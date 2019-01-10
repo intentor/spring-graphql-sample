@@ -1,0 +1,24 @@
+type User {
+    id: ID!
+    username: String!
+    fullname: String!
+}
+
+type Product {
+    id: ID!
+    productSku: String!
+    productName: String!
+    productPrice: Float!
+    active: Boolean!
+}
+
+type Query {
+   allUsers: [User]
+   findUser(username: String!): User
+   allProducts: [Product]
+   findProduct(sku: String!): Product
+}
+
+schema {
+   query: Query
+}
