@@ -4,6 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.intentor.samples.store.domain.User;
 import org.intentor.samples.store.exceptions.DataNotFoundException;
 import org.intentor.samples.store.repositories.UserRepository;
+import org.intentor.samples.store.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +14,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserQueries implements GraphQLQueryResolver {
     /**
-     * Repository for accessing users data.
+     * User manipulation service.
      */
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
+    /**
+     * Finds all users.
+     *
+     * @return Users found.
+     */
     public Iterable<User> allUsers() {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
+    /**
+     * Finds a user by its username.
+     *
+     * @param username Username of the user to find.
+     * @return User found.
+     * @throws DataNotFoundException in case no user is found.
+     */
     public User findUser(String username) {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new DataNotFoundException("user", username));
+        return userService.findByUsername(username);
     }
 }

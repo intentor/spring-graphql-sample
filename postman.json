@@ -150,20 +150,6 @@
 						"description": ""
 					},
 					"response": []
-				},
-				{
-					"name": "Orders - Delete",
-					"request": {
-						"url": "http://localhost:8080/api/orders/1",
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
 				}
 			]
 		},
